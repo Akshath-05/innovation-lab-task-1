@@ -1,7 +1,7 @@
 function runTask1() {
     let output = "";
-    var a = 10;
-    let b = 20;
+    var a = prompt("enter the number");
+    let b = prompt("enter the number2");
     const c = 30;
   
     output += `var a = ${a}\nlet b = ${b}\nconst c = ${c}\n`;
@@ -16,7 +16,7 @@ function runTask1() {
   
   function runTask2() {
     let output = "";
-    let num = 42;
+    let num = prompt("enter the number");
     let str = "Hello";
     let bool = true;
     let nul = null;
