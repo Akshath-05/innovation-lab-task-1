@@ -1,0 +1,180 @@
+/* Google Font */
+@import url('https://fonts.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* Updated background styles */
+  background-color: #022028;
+  opacity: 0.9;
+  background: 
+    linear-gradient(135deg, #7077ef55 25%, transparent 25%) -25px 0/ 50px 50px, 
+    linear-gradient(225deg, #7077ef 25%, transparent 25%) -25px 0/ 50px 50px, 
+    linear-gradient(315deg, #7077ef55 25%, transparent 25%) 0px 0/ 50px 50px, 
+    linear-gradient(45deg, #7077ef 25%, #022028 25%) 0px 0/ 50px 50px;
+  /* End of updated background styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden; /* Hide overflow from the cube */
+  position: relative; /* For z-index to work with absolute positioning */
+}
+
+/* Styles for the 3D Cube Background */
+.background-cube-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1; /* Place it behind the calculator content */
+}
+
+.🧊 {
+  place-self: center;
+  transform-style: preserve-3d;
+  /* Define --w as a CSS variable here, reduced for smaller size */
+  --w: 25vmin; /* Adjusted from 39vmin to make the cube smaller */
+  /* Adjusted initial rotation to make it appear more horizontal */
+  transform: rotateX(0deg) rotateY(-45deg); /* Changed rotation for horizontal view */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateX(0deg) rotateY(-45deg); /* Adjusted for centering and new rotation */
+  animation: cubeRotate 20s infinite linear; /* Continuous rotation */
+}
+
+@keyframes cubeRotate {
+  from {
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(-45deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(315deg); /* Rotates a full circle */
+  }
+}
+
+.face {
+  grid-area: 1 / 1;
+  width: var(--w); /* Use the CSS variable --w */
+  aspect-ratio: 4 / 3; /* Changed aspect ratio to make faces more horizontal */
+  /* Use --j and --n for rotation and translation */
+  transform:
+    rotateY(calc(var(--j) / var(--n) * 1turn))
+    translateZ(calc(.5 * var(--w))); /* Use CSS variable --w */
+  background:
+    linear-gradient(90deg, transparent 33.3%, currentcolor 0)
+      var(--w) 0 / 100% 25% repeat-x,
+    linear-gradient(90deg,
+        transparent 33.3%, currentcolor 0 66.67%, transparent 0)
+      var(--w) 0 repeat-x,
+    linear-gradient(transparent 37.5%,
+        currentcolor 0 62.5%, transparent 0);
+  color:
+    color-mix(in srgb,
+      #403700 calc(var(--int, round(down, var(--j)/2, 1))*100%),
+      #d4af37); /* Goldish color for the cube faces */
+  filter: drop-shadow(1px 0 currentcolor);
+  animation: a 2s ease-in-out infinite;
+}
+
+@keyframes a { to { background-position: 0 0 } }
+
+/* fallback for no round() in CSS */
+@supports not (scale: Round(.3, 1)) {
+  @property --int {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false
+  }
+
+  .face { --int: calc(var(--j) / 2 - .5) }
+}
+
+/* Calculator specific styles */
+.container {
+  text-align: center;
+  color: #f0f0f0; /* Light gray for general text to stand out on black */
+  z-index: 1; /* Ensure calculator is above the background */
+  position: relative; /* For z-index to work */
+  padding: 20px; /* Added padding for better spacing on smaller screens */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #f0e9c3; /* Gold color for the Smart Calculator title */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better readability */
+}
+
+.calculator {
+  background-color: #ffffff; /* Kept white for contrast */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+  width: 90%; /* Make width responsive */
+  max-width: 350px; /* Set a maximum width for larger screens */
+  margin: auto;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+input[type="number"]:focus {
+  border-color: #DAA520; /* Gold border on focus */
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4A4A4A; /* Darker grey for general buttons */
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
+}
+
+button:hover {
+  background-color: #666666; /* Lighter grey on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button.exit {
+  background-color: #e74c3c; /* Red for exit button */
+}
+
+button.exit:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.result {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #FFD700; /* Gold color for the result text */
+}

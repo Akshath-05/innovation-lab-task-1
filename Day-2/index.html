@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator with Gear Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Gear Animation -->
+    <div class="a3d">
+        <div class="s3d">
+            <div class="s2d cogface">
+                <svg viewBox="-400 -400 800 800">
+                    <polygon points="400 0 386 -104 369 -102 354 -98 338 -92 323 -84 309 -74 296 -62 284 -48 274 -33 265 -17 258 0 252 17 248 34 245 51 244 69 245 86 247 104 251 121 257 137 264 153 273 168 283 182 295 194 308 205 322 214 337 221 353 227 369 230 386 232 400 232 386 232 369 230 353 227 337 221 322 214 308 205 295 194 283 182 273 168 264 153 257 137 251 121 247 104 245 86 244 69 245 51 248 34 252 17 258 0 265 -17 274 -33 284 -48 296 -62 309 -74 323 -84 338 -92 354 -98 369 -102 386 -104 400 0" fill="currentColor"/>
+                </svg>
+            </div>
+            <!-- Additional gear faces would be generated here -->
+        </div>
+        <div class="s3d">
+            <div class="s2d cogface">
+                <svg viewBox="-400 -400 800 800">
+                    <polygon points="400 0 386 -104 369 -102 354 -98 338 -92 323 -84 309 -74 296 -62 284 -48 274 -33 265 -17 258 0 252 17 248 34 245 51 244 69 245 86 247 104 251 121 257 137 264 153 273 168 283 182 295 194 308 205 322 214 337 221 353 227 369 230 386 232 400 232 386 232 369 230 353 227 337 221 322 214 308 205 295 194 283 182 273 168 264 153 257 137 251 121 247 104 245 86 244 69 245 51 248 34 252 17 258 0 265 -17 274 -33 284 -48 296 -62 309 -74 323 -84 338 -92 354 -98 369 -102 386 -104 400 0" fill="currentColor"/>
+                </svg>
+            </div>
+            <!-- Additional gear faces would be generated here -->
+        </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calculator">
+        <input type="number" id="num1" placeholder="First Number">
+        <input type="text" id="operator" placeholder="+  -  *  /">
+        <input type="number" id="num2" placeholder="Second Number">
+        <button onclick="calculate()">Calculate</button>
+        <p id="result">Result: </p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
