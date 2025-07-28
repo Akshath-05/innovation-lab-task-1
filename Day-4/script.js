@@ -1,0 +1,10 @@
+console.log(Math.random());                  
+console.log(Math.floor(4.7));              
+console.log(Math.ceil(4.3));                
+console.log(Math.max(3, 5, 1));             
+console.log(Math.min(3, 5, 1));             
+let name = "Akshath";
+console.log(name.toUpperCase());           
+console.log(name.slice(0, 3));              
+console.log(name.includes("ath"));          
+console.log(name.replace("aksh", "aks"));    
