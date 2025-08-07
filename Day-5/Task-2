@@ -1,6 +1,6 @@
 let student={
     name:'Akshath',
-    age:18,
+    age:20,
     displayInfo:function(){
         console.log('Name: ${this.name},Age:${this.age}');
     }
